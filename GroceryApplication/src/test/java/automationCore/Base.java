@@ -1,5 +1,7 @@
 package automationCore;
 
+import java.time.Duration;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterMethod;
@@ -13,6 +15,8 @@ public class Base {
 		driver.get("https://groceryapp.uniqassosiates.com/admin/login");
 		driver.manage().window().maximize();
 		//driver.manage().window().minimize();
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));//implicit wait code
+		
 		
 		
 	}
