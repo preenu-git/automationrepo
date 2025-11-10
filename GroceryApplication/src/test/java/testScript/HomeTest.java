@@ -21,7 +21,8 @@ public class HomeTest extends Base {
 		loginPage.clickOnSignInkButton();
 		HomePage homepage = new HomePage(driver);
 		homepage.clickOnAdminField();
-		homepage.clickOnLogOutButton();
+		//homepage.clickOnLogOutButton();
+		homepage.clickOnMoreInfo();
 	}
 	
 }

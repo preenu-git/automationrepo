@@ -12,15 +12,20 @@ import org.openqa.selenium.support.PageFactory;
 			PageFactory.initElements(driver, this);
 	}
 		@FindBy(xpath = "//li[@class='nav-item dropdown']") WebElement adminField;
-		@FindBy(xpath ="//i[@class='ace-icon fa fa-power-off']") WebElement logOutField;
+		//@FindBy(xpath ="//i[@class='ace-icon fa fa-power-off']") WebElement logOutField;
+		@FindBy(linkText = "More info")WebElement moreInfoField;
 		
 		
 		public void clickOnAdminField()
 		{
 		adminField.click();
 		}
-		public void clickOnLogOutButton()
+		//public void clickOnLogOutButton()
+		//{
+			//logOutField.click();
+		//}
+		public void clickOnMoreInfo()
 		{
-			logOutField.click();
+			moreInfoField.click();
 		}
 }
