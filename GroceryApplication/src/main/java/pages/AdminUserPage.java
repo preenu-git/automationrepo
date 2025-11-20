@@ -28,6 +28,7 @@ import org.openqa.selenium.support.ui.Select;
 		@FindBy(xpath = "//select[@name='ut']")WebElement usertype2;
 		@FindBy(xpath = "//button[@value='sr']")WebElement search;
 		@FindBy(xpath = "//a[@class='btn btn-rounded btn-warning']")WebElement resetField;
+		@FindBy(xpath = "//h3[text()='Admin Users Informations']")WebElement adminUserInformation;
 		
 		//new user
 		
@@ -78,6 +79,10 @@ import org.openqa.selenium.support.ui.Select;
 		public void clickOnResetButton()
 		{
 			resetField.click();
+		}
+		public boolean adminUserInformationDisplayed()
+		{
+			return adminUserInformation.isDisplayed();
 		}
 		
 

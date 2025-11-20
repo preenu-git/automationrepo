@@ -18,6 +18,9 @@ public class LoginPage  {
 	//name='password
 	@FindBy(css = "button[type='submit']") WebElement signInField;
 	//xpath="//button[text()=\"SignIn\"]"
+	@FindBy(xpath="//a[@data-widget='pushmenu']") WebElement dashBoard;
+	@FindBy(xpath = "//b[text()='7rmart supermarket']")WebElement title;
+	@FindBy(xpath = "//p[@class='login-box-msg']")WebElement signInToStartYourSession;
 
 public void enterUsernameOnUsernameField(String userName)
 {
@@ -30,5 +33,17 @@ public void enterPasswordOnPasswordField(String password)
 public void clickOnSignInkButton()
 {
 	signInField.click();
+}
+public boolean dashBoardDisplayed()
+{
+	return dashBoard.isDisplayed();
+}
+public String getPagetitle()
+{
+	return title.getText();
+}
+public boolean signInToStartYourSessionDisplayed()
+{
+    return signInToStartYourSession.isDisplayed();
 }
 }
