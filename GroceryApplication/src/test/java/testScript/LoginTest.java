@@ -3,10 +3,12 @@ package testScript;
 import java.io.IOException;
 
 import org.testng.Assert;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 
 import automationCore.Base;
+import constants.Constant;
 import pages.LoginPage;
 import utilities.ExcelUtility;
 
@@ -21,7 +23,7 @@ public class LoginTest extends Base{
 		loginPage.enterPasswordOnPasswordField(password);
 		loginPage.clickOnSignInkButton();
 		boolean isDashBoardDisplayed=loginPage.dashBoardDisplayed();
-		Assert.assertTrue(isDashBoardDisplayed, "user is not able to login with valid credentials");
+		Assert.assertTrue(isDashBoardDisplayed,Constant.ValidCredentialsErrorMessage);
 		
 		
 	}
@@ -36,7 +38,7 @@ public class LoginTest extends Base{
 		loginPage.clickOnSignInkButton();
 		String actual=loginPage.getPagetitle();
 		String expected="7rmart supermarket";
-		Assert.assertEquals(actual, expected,"user is able to login with invalid username");
+		Assert.assertEquals(actual, expected,Constant.InvalidUserNameErrorMessage);
 	}
 	@Test(priority=3,description="verifying login with valid username and invalid password")
 	public void verifyUserLoginWithValidUserNameInvalidPassword() throws IOException 
@@ -48,21 +50,29 @@ public class LoginTest extends Base{
 		loginPage.enterPasswordOnPasswordField(password);
 		loginPage.clickOnSignInkButton();
 		boolean issignInToStartYourSession=loginPage.signInToStartYourSessionDisplayed();
-		Assert.assertTrue(issignInToStartYourSession, "user is  able to login with valid username and invalid password");
+		Assert.assertTrue(issignInToStartYourSession,Constant.InvalidPasswordErrorMessage);
 	}
-	@Test(priority=4,description="verifying login with invalid username and invalid password",groups= {"smoke"})
-	public void verifyUserLoginWithInvalidUserNameInvalidPassword() throws IOException 
+	@Test(priority=4,description="verifying login with invalid username and invalid password",groups= {"smoke"},dataProvider = "loginProvider")
+	public void verifyUserLoginWithInvalidUserNameInvalidPassword(String userName,String password ) throws IOException 
 	{
-		String userName=ExcelUtility.getStringData(3, 0, "LoginPage");
-		String password=ExcelUtility.getStringData(3, 1, "LoginPage");
+		//String userName=ExcelUtility.getStringData(3, 0, "LoginPage");
+		//String password=ExcelUtility.getStringData(3, 1, "LoginPage");
 		LoginPage loginPage=new LoginPage(driver);
 		loginPage.enterUsernameOnUsernameField(userName);
 		loginPage.enterPasswordOnPasswordField(password);
 		loginPage.clickOnSignInkButton();
 		boolean issignInToStartYourSession=loginPage.signInToStartYourSessionDisplayed();
-		Assert.assertTrue(issignInToStartYourSession, "user is able to login with invalid username and invalid password");
+		Assert.assertTrue(issignInToStartYourSession,Constant.InvalidCredentialsErrorMessage);
 	}
+	@DataProvider(name = "loginProvider")
+	public Object[][] getDataFromDataProvider() throws IOException {
+
+		return new Object[][] { new Object[] { "admin", "admin22" }, new Object[] { "admin123", "123" },
+				// new Object[] {ExcelUtility.getStringData(3,
+				// 0,"Login"),ExcelUtility.getStringData(3,1 ,"Login")}
+		};
 	
 
+}
 }
 

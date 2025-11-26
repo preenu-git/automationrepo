@@ -6,6 +6,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import automationCore.Base;
+import constants.Constant;
 import pages.HomePage;
 import pages.LoginPage;
 import pages.ManageNewsPage;
@@ -27,7 +28,7 @@ public class HomeTest extends Base {
 		//homepage.clickOnMoreInfo();
 		//homepage.clickOnMoreField1();
 		boolean isHomePageDisplayed=homepage.threeLinesDisplayed();
-		Assert.assertTrue(isHomePageDisplayed, "user is not able to successfully logout");
+		Assert.assertTrue(isHomePageDisplayed,Constant.LogOutErrorMessage);
 		
 	}
 	

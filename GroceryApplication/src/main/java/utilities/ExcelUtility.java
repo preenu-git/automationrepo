@@ -8,13 +8,15 @@ import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
+import constants.Constant;
+
 public class ExcelUtility {
 	static FileInputStream f;//inbuilt class to read data from the file
 	static XSSFWorkbook wb;//java inbuilt class to read data from the workbook
 	static XSSFSheet sh;// java inbuilt class to read data from sheet
 	public static String getStringData(int a,int b,String sheet) throws IOException 
 	{
-		f=new FileInputStream("C:\\Users\\lenovo\\git\\automationrepo\\GroceryApplication\\src\\test\\resources\\testdata2.xlsx");
+		f=new FileInputStream(Constant.ExcelFile);
 		wb= new XSSFWorkbook(f);
 		sh=wb.getSheet(sheet);//worksheet is a method used to get details from the sheet
 		XSSFRow r =sh.getRow(a);//a represent row....xssf is an inbuilt class used to read data from the row
@@ -25,7 +27,7 @@ public class ExcelUtility {
 	}
 	public static String getintData(int a,int b,String sheet) throws IOException
 	{
-		f=new FileInputStream("C:\\Users\\lenovo\\git\\automationrepo\\GroceryApplication\\src\\test\\resources\\testdata2.xlsx");
+		f=new FileInputStream(Constant.ExcelFile);
 		wb=new XSSFWorkbook(f);
 		sh=wb.getSheet(sheet);
 		XSSFRow r=sh.getRow(a);
@@ -39,7 +41,7 @@ public class ExcelUtility {
 	public static String getfloatData(int a,int b,String sheet) throws IOException
 	
 	{
-		f=new FileInputStream("C:\\Users\\lenovo\\git\\automationrepo\\GroceryApplication\\src\\test\\resources\\testdata2.xlsx");
+		f=new FileInputStream(Constant.ExcelFile);
 		wb=new XSSFWorkbook(f);
 		sh=wb.getSheet(sheet);
 		XSSFRow r=sh.getRow(a);

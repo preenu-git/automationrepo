@@ -6,6 +6,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import automationCore.Base;
+import constants.Constant;
 import pages.AdminUserPage;
 import pages.HomePage;
 import pages.LoginPage;
@@ -35,7 +36,7 @@ public class AdminUserTest extends Base {
 		adminUser.selectTypeOnTypeField();
 		adminUser.clickOnSaveButton();
 		boolean isAdminUserDisplayed=adminUser.adminUserInformationDisplayed();
-		Assert.assertFalse(isAdminUserDisplayed, "user is able to add newly users");
+		Assert.assertFalse(isAdminUserDisplayed,Constant.AddUserErrorMessage);
 	}
 	@Test(description="verify User Is Able Search newly added user")
 		public void verifyWhetherUserIsAbleToSearchTheNewlyAddedUser() throws IOException
@@ -55,7 +56,7 @@ public class AdminUserTest extends Base {
 		adminUser.selectType();
 		adminUser.clickOnSearchButton2();
 		boolean isAdminUserDisplayed=adminUser.adminUserInformationDisplayed();
-		Assert.assertFalse(isAdminUserDisplayed, "user is able to search newly users");
+		Assert.assertFalse(isAdminUserDisplayed,Constant.SearchErrorMessage);
 		
 		}
 	@Test(description="verify User Is Able To Reset")
@@ -72,7 +73,7 @@ public class AdminUserTest extends Base {
 		AdminUserPage adminUser=new AdminUserPage(driver);
 		adminUser.clickOnResetButton();
 		boolean isAdminUserDisplayed=adminUser.adminUserInformationDisplayed();
-		Assert.assertFalse(isAdminUserDisplayed, "user is able to Reset");
+		Assert.assertFalse(isAdminUserDisplayed,Constant.ResetErrorMessage);
 	}
 		
 	}
