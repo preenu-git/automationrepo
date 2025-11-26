@@ -13,21 +13,20 @@ import pages.ManageNewsPage;
 import utilities.ExcelUtility;
 
 public class HomeTest extends Base {
-	@Test(description="verify successsfully logout by the user")//,retryAnalyzer = retry.Retry.class)
+	HomePage homePage;
+	@Test(description="verify successsfully logout by the user",retryAnalyzer = retry.Retry.class)
 	public void verifyWhetherUserIsAbleToSuccessfullyLogout() throws IOException
 	{
 		String userName=ExcelUtility.getStringData(0, 0, "LoginPage");
 		String password=ExcelUtility.getStringData(0, 1, "LoginPage");
 		LoginPage loginPage=new LoginPage(driver);
-		loginPage.enterUsernameOnUsernameField(userName);
-		loginPage.enterPasswordOnPasswordField(password);
-		loginPage.clickOnSignInkButton();
-		HomePage homepage = new HomePage(driver);
-		homepage.clickOnAdminField();
-		//homepage.clickOnLogOutButton();
-		//homepage.clickOnMoreInfo();
-		//homepage.clickOnMoreField1();
-		boolean isHomePageDisplayed=homepage.threeLinesDisplayed();
+		loginPage.enterUsernameOnUsernameField(userName).enterPasswordOnPasswordField(password);
+		homePage=loginPage.clickOnSignInkButton();
+        homePage.clickOnAdminField();
+		loginPage=homePage.clickOnLogOutButton();
+		//homePage.clickOnMoreInfo();
+		//homePage.clickOnMoreField1();
+		boolean isHomePageDisplayed=homePage.threeLinesDisplayed();
 		Assert.assertTrue(isHomePageDisplayed,Constant.LogOutErrorMessage);
 		
 	}

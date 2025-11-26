@@ -12,7 +12,7 @@ import org.openqa.selenium.support.PageFactory;
 			PageFactory.initElements(driver, this);
 	}
 		@FindBy(xpath = "//li[@class='nav-item dropdown']") WebElement adminField;
-		//@FindBy(xpath ="//i[@class='ace-icon fa fa-power-off']") WebElement logOutField;
+		@FindBy(xpath ="//i[@class='ace-icon fa fa-power-off']") WebElement logOutField;
 	  @FindBy(linkText = "More info")WebElement moreInfoField;
      @FindBy(xpath = "//p[text()='Manage News']")WebElement moreInfoField1;
 	@FindBy(xpath = "//i[@class='fas fa-bars']")WebElement threeLines;
@@ -20,21 +20,25 @@ import org.openqa.selenium.support.PageFactory;
 		
 		
 		
-		public void clickOnAdminField()
+		public HomePage clickOnAdminField()
 		{
 		adminField.click();
+		return this;
 		}
-		/*public void clickOnLogOutButton()
+		public LoginPage clickOnLogOutButton()
 		{
 			logOutField.click();
-		}*/
-		public void clickOnMoreInfo()
+			return new LoginPage(driver);
+		}
+		public AdminUserPage clickOnMoreInfo()
 		{
 			moreInfoField.click();
+			return new AdminUserPage(driver);
 		}
-		public void clickOnMoreField1()
+		public ManageNewsPage clickOnMoreField1()
 		{
 			moreInfoField1.click();
+			return new ManageNewsPage(driver);
 		}
 		public boolean threeLinesDisplayed()
 		{

@@ -22,17 +22,20 @@ public class LoginPage  {
 	@FindBy(xpath = "//b[text()='7rmart supermarket']")WebElement title;
 	@FindBy(xpath = "//p[@class='login-box-msg']")WebElement signInToStartYourSession;
 
-public void enterUsernameOnUsernameField(String userName)
+public LoginPage enterUsernameOnUsernameField(String userName)
 {
 	userNameField.sendKeys(userName);
+	return this;
 }
-public void enterPasswordOnPasswordField(String password)
+public LoginPage enterPasswordOnPasswordField(String password)
 {
 	passwordField.sendKeys(password);
+	return this;
 }
-public void clickOnSignInkButton()
+public HomePage clickOnSignInkButton()
 {
 	signInField.click();
+	return new HomePage(driver);
 }
 public boolean dashBoardDisplayed()
 {

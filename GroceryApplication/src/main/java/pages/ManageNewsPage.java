@@ -21,28 +21,34 @@ public class ManageNewsPage {
 	//@FindBy(xpath = "//h3[text()='Enter News Informations']")WebElement enterNewsInformation;
 	@FindBy(xpath = "//i[@class='icon fas fa-check']")WebElement alert;
 	
-	public void clickOnNewField1()
+	public ManageNewsPage clickOnNewField1()
 	{
 		newbutton.click();
+		return this;
 	}
-	public void enterNewsOnNewsField(String news) {
+	public ManageNewsPage enterNewsOnNewsField(String news) {
 		newsField.sendKeys(news);
+		return this;
 	}
-   public void clickOnSaveButton()
+   public ManageNewsPage clickOnSaveButton()
    {
 	   saveField1.click();
+	   return this;
    }
-   public void clickOnSearchButton()
+   public ManageNewsPage clickOnSearchButton()
    {
 	   searchbutton.click();
+	   return this;
    }
-   public void enterNewsOnSearchField(String news)
+   public ManageNewsPage enterNewsOnSearchField(String news)
    {
 	   searchField.sendKeys(news);
+	   return this;
     }
-   public void clickOnSearchButton1()
+   public ManageNewsPage clickOnSearchButton1()
    {
 	   searchButton1.click();
+	   return this;
    }
    public boolean alertMsgDisplayed()
    {

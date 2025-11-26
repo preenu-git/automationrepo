@@ -32,53 +32,64 @@ import org.openqa.selenium.support.ui.Select;
 		
 		//new user
 		
-		public void clickOnNewButton()
+		public AdminUserPage clickOnNewButton()
 		{
 			newField.click();
+			return this;
 		}
-		public void enterUsernameOnUsernameFields(String addUserName)
+		public AdminUserPage enterUsernameOnUsernameFields(String addUserName)
 		{
 			userName.sendKeys(addUserName);
+			return this;
 		}
-		public void enterPasswordOnPasswordFields(String addPassword)
+		public AdminUserPage enterPasswordOnPasswordFields(String addPassword)
 		{
 			password.sendKeys(addPassword);
+			return this;
 		}
-		public void selectTypeOnTypeField()
+		public AdminUserPage selectTypeOnTypeField()
 		{
 			Select select=new Select(type);
 			select.selectByVisibleText("Staff");
+			return this;
 		}
-		public void clickOnSaveButton()
+		public AdminUserPage clickOnSaveButton()
 		{
 			saveField.click();
+			return this;
+			
 		}
 		
 		//search
 		
-		public void clickOnSearchButton()
+		public AdminUserPage clickOnSearchButton()
 		{
 			searchField.click();
+			return this;
 		}
-		public void enterUserNameOnUserNameField(String name)
+		public AdminUserPage enterUserNameOnUserNameField(String name)
 		{
 			userNameField1.sendKeys(name);
+			return this;
 		}
-		public void selectType()
+		public AdminUserPage selectType()
 		{
 			Select select=new Select(usertype2);
 			select.selectByVisibleText("Staff");
+			return this;
 		}
-		public void clickOnSearchButton2()
+		public AdminUserPage clickOnSearchButton2()
 		{
 		search.click();	
+		return this;
 		}
 		
 		// reset
 		
-		public void clickOnResetButton()
+		public AdminUserPage clickOnResetButton()
 		{
 			resetField.click();
+			return this;
 		}
 		public boolean adminUserInformationDisplayed()
 		{

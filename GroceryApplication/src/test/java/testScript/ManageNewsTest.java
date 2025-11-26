@@ -13,23 +13,20 @@ import pages.ManageNewsPage;
 import utilities.ExcelUtility;
 
 public class ManageNewsTest extends Base {
+	HomePage homePage;
+	ManageNewsPage manageNewsPage;
 	@Test(description="verify User Is Able To AddNewNews")
 	public void verifyWhetherTheUserIsAbleToAddNewNews() throws IOException
 	{
 		String userName=ExcelUtility.getStringData(0, 0, "LoginPage");
 		String password=ExcelUtility.getStringData(0, 1, "LoginPage");
 		LoginPage loginPage=new LoginPage(driver);
-		loginPage.enterUsernameOnUsernameField(userName);
-		loginPage.enterPasswordOnPasswordField(password);
-		loginPage.clickOnSignInkButton();
-		HomePage homepage = new HomePage(driver);
-		homepage.clickOnMoreField1();
-		ManageNewsPage newsPage=new ManageNewsPage(driver);
-		newsPage.clickOnNewField1();
+		loginPage.enterUsernameOnUsernameField(userName).enterPasswordOnPasswordField(password);
+		homePage=loginPage.clickOnSignInkButton();
+		manageNewsPage=homePage.clickOnMoreField1().clickOnNewField1();
 		String news=ExcelUtility.getStringData(0, 0, "ManageNews");
-		newsPage.enterNewsOnNewsField(news);
-		newsPage.clickOnSaveButton();
-		boolean isNewsPageDisplayed=newsPage.alertMsgDisplayed();
+		manageNewsPage.enterNewsOnNewsField(news).clickOnSaveButton();
+		boolean isNewsPageDisplayed=manageNewsPage.alertMsgDisplayed();
 		Assert.assertTrue(isNewsPageDisplayed,Constant.AddNewsErrorMessage);
 		
 	}
@@ -39,16 +36,12 @@ public class ManageNewsTest extends Base {
 		String userName=ExcelUtility.getStringData(0, 0, "LoginPage");
 		String password=ExcelUtility.getStringData(0, 1, "LoginPage");
 		LoginPage loginPage=new LoginPage(driver);
-		loginPage.enterUsernameOnUsernameField(userName);
-		loginPage.enterPasswordOnPasswordField(password);
-		loginPage.clickOnSignInkButton();
-		HomePage homepage = new HomePage(driver);
-		homepage.clickOnMoreField1();
-		ManageNewsPage newsPage=new ManageNewsPage(driver);
-		newsPage.clickOnSearchButton();
+		loginPage.enterUsernameOnUsernameField(userName).enterPasswordOnPasswordField(password);
+		homePage=loginPage.clickOnSignInkButton();
+		manageNewsPage=homePage.clickOnMoreField1();
+		manageNewsPage=manageNewsPage.clickOnSearchButton();
 		String news=ExcelUtility.getStringData(0, 0, "ManageNews");
-		newsPage.enterNewsOnSearchField(news);
-		newsPage.clickOnSearchButton1();
+		manageNewsPage=manageNewsPage.enterNewsOnSearchField(news).clickOnSearchButton1();
 		boolean isDashBoardDisplayed=loginPage.dashBoardDisplayed();
 		Assert.assertTrue(isDashBoardDisplayed,Constant.SearchNewsErrorMessage);
 	}
