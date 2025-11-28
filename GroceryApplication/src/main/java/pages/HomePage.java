@@ -5,8 +5,11 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import utilities.WaitUtility;
+
 	public class HomePage  {
 		public WebDriver driver;
+		WaitUtility waitutility=new WaitUtility();
 		public HomePage(WebDriver driver) {
 			this.driver=driver;
 			PageFactory.initElements(driver, this);
@@ -22,6 +25,7 @@ import org.openqa.selenium.support.PageFactory;
 		
 		public HomePage clickOnAdminField()
 		{
+		waitutility.waitUntilElementToBeClickable(driver, adminField);
 		adminField.click();
 		return this;
 		}
